@@ -131,3 +131,12 @@ int treeHeight(TreeNode* root)// Function to calculate the height of the binary 
 		return 1 + rightHeight;// Return 1 plus the height of the right subtree
 	}
 }
+void freeTree(TreeNode* root)// Function to free the memory allocated for the binary search tree
+{
+	if (root != NULL)// If the tree is not empty, free the left and right subtrees and then free the root
+	{
+		freeTree(root->left);// Recursively free the left subtree
+		freeTree(root->right);// Recursively free the right subtree
+		free(root);// Free the root node
+	}
+}
