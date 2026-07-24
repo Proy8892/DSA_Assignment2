@@ -28,5 +28,13 @@ int main(void)// Main function
 
 	printf("\n");// Print a newline after the generated letters
 
+	printf("\nLetters in alphabetical order:\n");// Print the letters in alphabetical order by performing an in-order traversal of the binary search tree
+	printInOrder(root);// Print the letters in alphabetical order
+
+	printf("\n\nNumber of nodes: %d\n", countNodes(root));// Print the number of nodes in the binary search tree
+	printf("Tree height: %d\n", treeHeight(root));// Print the height of the binary search tree
+
+	freeTree(root);// Free the memory allocated for the binary search tree
+
     return 0;
 }
