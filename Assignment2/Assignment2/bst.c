@@ -70,42 +70,64 @@ TreeNode* insertNode(TreeNode* root, char value)// Function to insert a node int
 	return root;// Return the root of the tree
 }
 
-TreeNode* searchNode(TreeNode* root, char value)
+TreeNode* searchNode(TreeNode* root, char value)// Function to search for a node in the binary search tree
 {
-	if (root == NULL)
+	if (root == NULL)// If the tree is empty or the value is not found, return NULL
 	{
-		return NULL;
+		return NULL;// Return NULL if the tree is empty or the value is not found
 	}
 
-	if (root->data == value)
+	if (root->data == value)// If the value is found, return the node
 	{
-		return root;
+		return root;// Return the node if the value is found
 	}
 
-	if (value < root->data)
+	if (value < root->data)// If the value is less than the root's data, search in the left subtree
 	{
-		return searchNode(root->left, value);
+		return searchNode(root->left, value);// Recursively search for the value in the left subtree
 	}
 	else
 	{
-		return searchNode(root->right, value);
+		return searchNode(root->right, value);// Recursively search for the value in the right subtree
 	}
 }
-void printInOrder(TreeNode* root)
+void printInOrder(TreeNode* root)// Function to print the binary search tree in order
 {
-	if (root != NULL)
+	if (root != NULL)// If the tree is not empty, print the left subtree, the root, and the right subtree
 	{
-		printInOrder(root->left);
-		printf("%c ", root->data);
-		printInOrder(root->right);
+		printInOrder(root->left);// Recursively print the left subtree
+		printf("%c ", root->data);// Print the root's data
+		printInOrder(root->right);// Recursively print the right subtree
 	}
 }
-int countNodes(TreeNode* root)
+int countNodes(TreeNode* root)// Function to count the number of nodes in the binary search tree
 {
-	if (root == NULL)
+	if (root == NULL)// If the tree is empty, return 0
 	{
-		return 0;
+		return 0;// Return 0 if the tree is empty
 	}
 
-	return 1 + countNodes(root->left) + countNodes(root->right);
+	return 1 + countNodes(root->left) + countNodes(root->right);// Return 1 (for the root) plus the number of nodes in the left and right subtrees
+}
+int treeHeight(TreeNode* root)// Function to calculate the height of the binary search tree
+{
+	int leftHeight;// Variable to store the height of the left subtree
+	int rightHeight;// Variable to store the height of the right subtree
+
+	if (root == NULL)// If the tree is empty, return 0
+	{
+		return 0;// Return 0 if the tree is empty
+	}
+
+	leftHeight = treeHeight(root->left);// Recursively calculate the height of the left subtree
+	rightHeight = treeHeight(root->right);// Recursively calculate the height of the right subtree
+
+	if (leftHeight > rightHeight)// If the height of the left subtree is greater than the height of the right subtree, return 1 plus the height of the left subtree
+	{
+		return 1 + leftHeight;// Return 1 plus the height of the left subtree
+	}
+	else
+	{
+		return 1 + rightHeight;// Return 1 plus the height of the right subtree
+	}
 }
