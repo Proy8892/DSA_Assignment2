@@ -91,3 +91,12 @@ TreeNode* searchNode(TreeNode* root, char value)
 		return searchNode(root->right, value);
 	}
 }
+void printInOrder(TreeNode* root)
+{
+	if (root != NULL)
+	{
+		printInOrder(root->left);
+		printf("%c ", root->data);
+		printInOrder(root->right);
+	}
+}
